@@ -12,7 +12,7 @@ const VideoFrame = styled.video`
     top: 0;
     width: 100%;
     height: 100%;
-    filter: blur(6px) brightness(150%);
+    filter: blur(10px);
 `;
 
 
@@ -21,7 +21,7 @@ const NewsLetter = styled.form`
     padding: 30px;
     max-width: 400px;
     border-radius: 10px;
-
+    box-shadow: 0 7px 21px rgba(0,0,0,0.4);
     h1 {
         font-family: monospace;
         font-size: 3em;
