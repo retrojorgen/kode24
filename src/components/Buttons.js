@@ -6,6 +6,7 @@ const defaultButton = styled.button`
     padding: 10px 10px;
     background-color: #c3c7cb;
     font-size: 1em;
+    outline: none;
 `;
 
 const ButtonStyle = styled(defaultButton)`
