@@ -1,29 +1,15 @@
 {
   "name": "kode24",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:retrojorgen/kode24.git",
+  "author": "Jørgen Jacobsen <jorgen.jacobsen@aller.com>",
+  "license": "MIT",
   "dependencies": {
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
-    "react-scripts": "1.1.4",
-    "styled-components": "^3.2.6",
-    "prop-types": "^15.6.1",
-    "@aller/eslint-config-aller": "0.5.2"
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "lint": "eslint src"
-  },
-  "devDependencies": {
-    "babel-cli": "6.26.0",
-    "babel-eslint": "8.2.3",
-    "eslint": "4.19.1",
-    "eslint-plugin-import": "2.11.0",
-    "eslint-plugin-jsx-a11y": "6.0.3",
-    "eslint-plugin-react": "7.7.0",
-    "styled-components": "3.2.6"
+    "start": "node server.js"
   }
 }
