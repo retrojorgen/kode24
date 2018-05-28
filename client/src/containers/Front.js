@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
+import React, { Component, Fragment } from 'react';
+import styled, { keyframes } from 'styled-components';
 import Button from '../components/Buttons';
 import codeVideo from '../video/code.mov';
 import Topbar from './Topbar.js';
@@ -15,6 +15,44 @@ const VideoFrame = styled.video`
     filter: blur(10px);
 `;
 
+const loading = keyframes`
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    60% {
+        transform: scale(1);
+        opacity: 0.4;
+    }
+    100% {
+    transform: scale(0);
+    opacity: 1;
+    }
+`;
+
+const Loading = styled.div`
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    position: relative;
+    float: right;
+    &:before,
+    &:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background-color: white;
+    }
+    &:before {
+        animation: ${loading} 2s ease-in-out infinite;
+    }
+    &:after {
+        animation: ${loading} 2s ease-in-out 1s infinite;
+    }
+`;
+
 
 const NewsLetter = styled.form`
     background-color: #00000094;
@@ -22,6 +60,9 @@ const NewsLetter = styled.form`
     max-width: 400px;
     border-radius: 10px;
     box-shadow: 0 7px 21px rgba(0,0,0,0.4);
+    .input-row {
+        margin-bottom: 10px;
+    }
     h1 {
         font-family: monospace;
         font-size: 3em;
@@ -58,6 +99,7 @@ const NewsLetter = styled.form`
         }
     }
     button {
+        position: relative;
         padding: 14px 30px;
         background-color: #ff0071;
         border: 0;
@@ -71,6 +113,22 @@ const NewsLetter = styled.form`
         color: white;
         margin-top: 20px;
         border-radius: 4px;
+        &:hover {
+            background-color: #ff4899;
+        }
+        &:active {
+            background-color: #d60863;
+        }
+    }
+    .thank-you {
+        border-top: 1px solid rgba(255,255,255,0.1);
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        padding-top: 10px;
+        padding-bottom: 10px;
+        color: #27ddf2;
+    }
+    .disclaimer {
+        font-size: 0.7em;
     }
     .code-text {
         color: #ff0071;
@@ -79,6 +137,9 @@ const NewsLetter = styled.form`
         color: #27ddf2;
     }
     
+`;
+
+const ThankYou = styled.p`
 `;
 
 const NewsLetterWrapper = styled.div`
@@ -92,12 +153,14 @@ const NewsLetterWrapper = styled.div`
     justify-content: center;
 `;
 
-
 class Front extends Component {
 
     state = {
         apiworking: "",
-        email: ""
+        email: "",
+        name: "",
+        loading: false,
+        done: false,
     }
 
         // Fetch passwords after first mount
@@ -117,10 +180,12 @@ class Front extends Component {
     handleEmailForm = (event) => {
         event.preventDefault();
         console.log('sending stuff', this.state.email);
+        this.setState({loading: true});
         fetch('/api/email', {
             method: 'post',
             body: JSON.stringify({
-                email: this.state.email
+                email: this.state.email,
+                name: this.state.name
             }),
             headers:{
                 'Content-Type': 'application/json'
@@ -128,11 +193,22 @@ class Front extends Component {
 
         })
         .then(res => res.json())
-        .then(response => console.log('success:', response));
+        .then(response => {
+            this.setState({
+                loading: false,
+                done: true
+            });
+            console.log('success:', response);
+        });
     }
 
     handleEmailInput = (value) => {
         this.setState({email: value});
+        console.log(this.state);
+    }
+
+    handleNameInput = (value) => {
+        this.setState({name: value});
         console.log(this.state);
     }
 
@@ -148,13 +224,41 @@ class Front extends Component {
                     <NewsLetter onSubmit={this.handleEmailForm}>
                         <h1><span className="code-highlight-text">kode</span><span className="code-text">24</span>.no</h1>
                         <p>Snart lanseres norges eneste nettavis for <span className="code-text">utviklere</span>. Vil du bli varslet?</p>
-                        <div className="input-row">
-                            <label>
-                                <input type="email" value={this.state.email} onChange={(event) => this.handleEmailInput(event.target.value)} placeholder="Din e-post" />
-                            </label>
-                        </div>
-                        <button type="submit">ok!</button>
+
+                        {    !this.state.done && (
+                                <Fragment>
+                                    <div className="input-row">
+                                        <label>
+                                            <input type="text" value={this.state.name} onChange={(event) => this.handleNameInput(event.target.value)} placeholder="Ditt navn" />
+                                        </label>
+                                    </div>
+                                    <div className="input-row">
+                                        <label>
+                                            <input type="email" value={this.state.email} onChange={(event) => this.handleEmailInput(event.target.value)} placeholder="Din e-post" />
+                                        </label>
+                                    </div>
+                                    <button type="submit">ok!
+                                        {
+                                            this.state.loading && (
+                                                <Loading />
+                                            )
+                                        }
+                                    </button>
+                                </Fragment>
+                            )
+                        }
+
+                        {
+                            this.state.done && (
+                                <p className="thank-you">
+                                    Takk {this.state.name}! Vi gir deg beskjed på jorgeja@gmail.com så fort vi har mer informasjon
+                                </p>
+                            )
+                        }
+                        <p className="disclaimer">Obs, e-postadressen og navnet ditt blir <u>kun</u> brukt i sammenheng med utsending av nyhetsbrev.</p>    
                     </NewsLetter>
+                    
+                    
                 </NewsLetterWrapper>
             </div>
         )
