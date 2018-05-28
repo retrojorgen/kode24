@@ -215,6 +215,7 @@ class Front extends Component {
 
 
     render () {
+        console.log('v1');
         return (
             <div>
                 <VideoFrame autoPlay loop>
