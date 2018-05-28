@@ -251,7 +251,7 @@ class Front extends Component {
                         {
                             this.state.done && (
                                 <p className="thank-you">
-                                    Takk {this.state.name}! Vi gir deg beskjed på jorgeja@gmail.com så fort vi har mer informasjon
+                                    Takk {this.state.name}! Vi gir deg beskjed på {this.state.email} så fort vi har mer informasjon
                                 </p>
                             )
                         }
