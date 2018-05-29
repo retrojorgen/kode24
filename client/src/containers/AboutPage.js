@@ -16,15 +16,16 @@ const AboutPageWrapper = styled.div`
   &.active {
     .mid-col {
       .mid-col-content {
-        transform: translateX(0);
+        transform: rotateY(0deg) translateX(0);
         opacity: 1;
         transition: all 0.25s ease-in-out;
+        
       }
     }
     .right-col {
       .inner-image {
-        transition: all 0.25s ease-in-out 0.25s;
-        transform: translateX(0);
+        transition: all 0.25s ease-in-out 0.2s;
+        transform: rotateY(0) translateX(0);
         opacity: 1;
       }
     }
@@ -44,7 +45,9 @@ const AboutPageWrapper = styled.div`
     background-color: transparent;
     overflow: hidden;
     position: relative;
+    perspective: 1000px;
     .mid-col-content {
+      
       background-color: #ff0071;
       position: absolute;
       left: 0;
@@ -54,9 +57,9 @@ const AboutPageWrapper = styled.div`
       max-height: 100%;
       overflow: auto;
       padding: 40px;
-      transition: all 0.25s ease-in-out 0.25s;
+      transition: all 0.25s ease-in-out 0.2s;
       opacity: 0;
-      transform: translateX(-100%);
+      transform: rotateY(45deg) translateX(-100%);
       h1 {
         font-weight: bold;
         font-size: 1.4em;
@@ -78,9 +81,10 @@ const AboutPageWrapper = styled.div`
     background-color: transparent;
     overflow: hidden;
     position: relative;
+    perspective: 1000px;
     .inner-image {
       transition: all 0.25s ease-in-out;
-      transform: translateX(-100%);
+      transform: rotateY(45deg) translateX(-100%);
       position: absolute;
       left: 0;
       top: 0;

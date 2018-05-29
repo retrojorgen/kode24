@@ -4,12 +4,20 @@ import styled from 'styled-components';
 
 const ColorLogoStyle = styled.svg`
   max-width: 100%;
-	.st0{fill:none;stroke:#FFFFFF;stroke-width:18;}
+	.st0{fill:none;stroke:#FFFFFF;stroke-width:18; transition: all 1s ease-in-out}
 	.st1{fill:none;stroke:url(#b);stroke-width:18;}
-	.st2{fill:none;stroke:#ff0071;stroke-width:19;}
+	.st2{fill:none;stroke:#ff0071;stroke-width:19; transition: all 1.3s ease-in-out}
 	.st3{fill:none;stroke:url(#a);stroke-width:19;}
 	.st4{fill:#FFFFFF;}
 	.st5{fill:#ff0071;}
+  &:hover {
+    .st0{
+      stroke: #ff0071;
+    }
+    .st2{
+      stroke: #FFFFFF;
+    }
+  }
 `;
 
 const WhiteOutlineShortLogoStyle = styled.svg`
