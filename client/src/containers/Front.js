@@ -3,11 +3,12 @@ import styled, { keyframes } from 'styled-components';
 import Button from '../components/Buttons';
 import codeVideo from '../video/code.mov';
 import Topbar from './Topbar.js';
+import ColorLogo, { WhiteOutlineShortLogo } from '../components/svgs';
 
 const editorColor = "#33ddf3";
 
 const VideoFrame = styled.video`
-    position: fixed;
+    position: absolute;
     left: 0;
     top: 0;
     width: 100%;
@@ -57,14 +58,13 @@ const Loading = styled.div`
 const NewsLetter = styled.form`
     background-color: #00000094;
     padding: 30px;
-    max-width: 400px;
     border-radius: 10px;
     box-shadow: 0 7px 21px rgba(0,0,0,0.4);
+    max-width: 500px;
     .input-row {
         margin-bottom: 10px;
     }
     h1 {
-        font-family: monospace;
         font-size: 3em;
         color: white;
         text-transform: lowercase;
@@ -72,11 +72,10 @@ const NewsLetter = styled.form`
         margin: 0;
     }
     p {
-        font-family: monospace;
         color: white;
         font-size: 1.4em;
         text-align: center;
-
+        line-height: 1.6em;
     }
 
     label {
@@ -84,13 +83,17 @@ const NewsLetter = styled.form`
         display: flex; 
         align-items: center;
         input {
-            background-color: #EEE;
-            border: 1px solid rgba(255,255,255,0.1);
+            background-color: transparent;
+            border: 0;
+            border-bottom: 1px solid rgba(255,255,255,0.8);
             padding: 14px;
             font-size: 1em;
-            color: black;
+            color: #3CB6D2;
             flex: 1 1 100%;
-            border-radius: 4px;
+            outline: none;
+            &::placeholder {
+                color: rgba(#3CB6D2,0.8);
+            }
 
         }
         span {
@@ -112,7 +115,7 @@ const NewsLetter = styled.form`
         font-size: 1em;
         color: white;
         margin-top: 20px;
-        border-radius: 4px;
+        border-radius: 0;
         &:hover {
             background-color: #ff4899;
         }
@@ -128,7 +131,9 @@ const NewsLetter = styled.form`
         color: #27ddf2;
     }
     .disclaimer {
-        font-size: 0.7em;
+        font-size: 0.8em;
+        margin-top: 20px;
+        color: #969696;
     }
     .code-text {
         color: #ff0071;
@@ -143,14 +148,47 @@ const ThankYou = styled.p`
 `;
 
 const NewsLetterWrapper = styled.div`
-    position: fixed;
+    width: 700px;
+    flex: 0 0 700px;
+    padding: 40px;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+    justify-content: center;
+`;
+
+const InfoWrapper = styled.div`
+    flex: 1 1 100%;
+    position: relative;
+`;
+
+const PageWrapper = styled.div`
     width: 100%;
     height: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: stretch;
+    position: absolute;
     left: 0;
     top: 0;
+`;
+
+const LogoHeader = styled.div`
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 0 40px 0 40px;
+    opacity: 0.6;
+`;
+
+const NewsLetterHeader = styled.div`
     display: flex;
-    align-items: center;
     justify-content: center;
+    margin-bottom: 40px;
 `;
 
 class Front extends Component {
@@ -217,13 +255,15 @@ class Front extends Component {
     render () {
         console.log('v1');
         return (
-            <div>
-                <VideoFrame autoPlay loop>
-                    <source src={codeVideo} />
-                </VideoFrame>
+            <PageWrapper>
                 <NewsLetterWrapper>
+                    <LogoHeader>
+                        <WhiteOutlineShortLogo />
+                    </LogoHeader>
                     <NewsLetter onSubmit={this.handleEmailForm}>
-                        <h1><span className="code-highlight-text">kode</span><span className="code-text">24</span>.no</h1>
+                        <NewsLetterHeader>
+                            <ColorLogo />
+                        </NewsLetterHeader>
                         <p>Snart lanseres norges eneste nettavis for <span className="code-text">utviklere</span>. Vil du bli varslet?</p>
 
                         {    !this.state.done && (
@@ -261,7 +301,12 @@ class Front extends Component {
                     
                     
                 </NewsLetterWrapper>
-            </div>
+                <InfoWrapper>
+                    <VideoFrame autoPlay loop>
+                        <source src={codeVideo} />
+                    </VideoFrame>
+                </InfoWrapper>
+            </PageWrapper>
         )
     }
 }
