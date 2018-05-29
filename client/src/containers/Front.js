@@ -3,6 +3,7 @@ import styled, { keyframes } from 'styled-components';
 import Button from '../components/Buttons';
 import codeVideo from '../video/code.mov';
 import Topbar from './Topbar.js';
+import AboutPage from './AboutPage';
 import ColorLogo, { WhiteOutlineShortLogo } from '../components/svgs';
 
 const editorColor = "#33ddf3";
@@ -114,11 +115,23 @@ const NewsLetter = styled.form`
         color: white;
         margin-top: 20px;
         border-radius: 0;
+        outline: none;
+        cursor: pointer;
         &:hover {
             background-color: #ff4899;
         }
         &:active {
             background-color: #d60863;
+        }
+    }
+    .more-info {
+        background-color: transparent;
+        border: 1px solid rgba(255,255,255,0.3);
+        &:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        &:active {
+            background-color: rgba(0,0,0,0.1);
         }
     }
     .thank-you {
@@ -222,6 +235,7 @@ class Front extends Component {
         name: "",
         loading: false,
         done: false,
+        toggleInfo: false
     }
 
         // Fetch passwords after first mount
@@ -273,18 +287,27 @@ class Front extends Component {
         console.log(this.state);
     }
 
+    handleMoreInfoClick = (event) => {
+        event.preventDefault();
+        console.log('mer info');
+        this.setState({
+            toggleInfo: !this.state.toggleInfo
+        });
+    }
+
 
 
     render () {
         console.log('v1');
         return (
             <PageWrapper>
+                <AboutPage toggleInfo={this.state.toggleInfo} />
                 <NewsLetterWrapper>
                     <NewsLetter onSubmit={this.handleEmailForm}>
                         <NewsLetterHeader>
                             <ColorLogo />
                         </NewsLetterHeader>
-                        <p>Snart lanserer vi Norges første nettavis for <span className="code-text">utviklere</span>. Vil du vite mer?</p>
+                        <p>Snart lanserer vi Norges første nettavis for <span className="code-text">utviklere</span>. Vil du holde deg oppdatert?</p>
 
                         {    !this.state.done && (
                                 <Fragment>
@@ -316,6 +339,9 @@ class Front extends Component {
                                 </p>
                             )
                         }
+                        <button className="more-info" onClick={(event) => this.handleMoreInfoClick(event)}>
+                            Mer info
+                        </button>
                         <p className="disclaimer">Informasjonen blir <u>kun</u> brukt i sammenheng med utsending av nyhetsbrev.</p>    
                     </NewsLetter>
                     
