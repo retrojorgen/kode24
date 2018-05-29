@@ -182,14 +182,18 @@ const InfoWrapper = styled.div`
 `;
 
 const PageWrapper = styled.div`
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    display: flex;
-    align-items: stretch;
-    position: absolute;
-    left: 0;
-    top: 0;
+    position: relative;
+    @media (min-device-width: 1100px) { 
+        flex: 1 1 100%;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        display: flex;
+        align-items: stretch;
+        position: absolute;
+        left: 0;
+        top: 0;    
+    }
 `;
 
 const LogoHeader = styled.div`
