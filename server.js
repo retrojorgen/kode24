@@ -28,7 +28,7 @@ app.post('/api/email', (req, res) => {
   const firstName = nameList[0];
   const lastName = nameList.length > 1 ? nameList.splice(1, nameList.length).join(" ") : "";
 
-  mailchimp.post("/lists/c4cf0a5755/members/",
+  mailchimp.post("/lists/" + process.env.MAILCHIMP_KODE24_LIST_ID + "/members/",
   {
     "email_address": email,
     "status": "subscribed",
