@@ -286,12 +286,12 @@ class Front extends Component {
                                 <Fragment>
                                     <div className="input-row">
                                         <label>
-                                            <input type="text" value={this.state.name} onChange={(event) => this.handleNameInput(event.target.value)} placeholder="navn" />
+                                            <input type="text" required value={this.state.name} onChange={(event) => this.handleNameInput(event.target.value)} placeholder="navn" />
                                         </label>
                                     </div>
                                     <div className="input-row">
                                         <label>
-                                            <input type="email" value={this.state.email} onChange={(event) => this.handleEmailInput(event.target.value)} placeholder="e-post" />
+                                            <input type="email" required value={this.state.email} onChange={(event) => this.handleEmailInput(event.target.value)} placeholder="e-post" />
                                         </label>
                                     </div>
                                     <button type="submit">Hold meg oppdatert
