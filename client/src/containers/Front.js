@@ -71,7 +71,7 @@ const NewsLetter = styled.form`
     }
     p {
         color: white;
-        font-size: 1.4em;
+        font-size: 1.2em;
         text-align: center;
         line-height: 1.6em;
     }
@@ -157,9 +157,15 @@ const NewsLetterWrapper = styled.div`
     justify-content: center;
     @media (min-device-width: 1100px) { 
         padding: 40px;
+        width: 500px;
+        flex: 0 0 500px;
+        background-color: transparent;
+    }
+    @media (min-device-width: 1281px) { 
+        padding: 40px;
         width: 700px;
         flex: 0 0 700px;
-        background-color: black;
+        background-color: transparent;
     }
 `;
 
@@ -277,21 +283,21 @@ class Front extends Component {
                         <NewsLetterHeader>
                             <ColorLogo />
                         </NewsLetterHeader>
-                        <p>Snart lanseres norges eneste nettavis for <span className="code-text">utviklere</span>. Vil du bli varslet?</p>
+                        <p>Snart lanserer vi Norges første nettavis for <span className="code-text">utviklere</span>. Vil du vite mer?</p>
 
                         {    !this.state.done && (
                                 <Fragment>
                                     <div className="input-row">
                                         <label>
-                                            <input type="text" value={this.state.name} onChange={(event) => this.handleNameInput(event.target.value)} placeholder="Ditt navn" />
+                                            <input type="text" value={this.state.name} onChange={(event) => this.handleNameInput(event.target.value)} placeholder="navn" />
                                         </label>
                                     </div>
                                     <div className="input-row">
                                         <label>
-                                            <input type="email" value={this.state.email} onChange={(event) => this.handleEmailInput(event.target.value)} placeholder="Din e-post" />
+                                            <input type="email" value={this.state.email} onChange={(event) => this.handleEmailInput(event.target.value)} placeholder="e-post" />
                                         </label>
                                     </div>
-                                    <button type="submit">ok!
+                                    <button type="submit">Hold meg oppdatert
                                         {
                                             this.state.loading && (
                                                 <Loading />
@@ -309,7 +315,7 @@ class Front extends Component {
                                 </p>
                             )
                         }
-                        <p className="disclaimer">Obs, e-postadressen og navnet ditt blir <u>kun</u> brukt i sammenheng med utsending av nyhetsbrev.</p>    
+                        <p className="disclaimer">Informasjonen blir <u>kun</u> brukt i sammenheng med utsending av nyhetsbrev.</p>    
                     </NewsLetter>
                     
                     
