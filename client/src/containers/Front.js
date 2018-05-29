@@ -56,10 +56,8 @@ const Loading = styled.div`
 
 
 const NewsLetter = styled.form`
-    background-color: #00000094;
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 7px 21px rgba(0,0,0,0.4);
     max-width: 500px;
     .input-row {
         margin-bottom: 10px;
@@ -148,21 +146,34 @@ const ThankYou = styled.p`
 `;
 
 const NewsLetterWrapper = styled.div`
-    width: 700px;
-    flex: 0 0 700px;
-    padding: 40px;
-    background-color: black;
+    flex: 0 0 100%;
+    padding: 0;
+    background-color: rgba(0,0,0,0,0.6);
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
     z-index: 10;
     justify-content: center;
+    @media (min-device-width: 1100px) { 
+        padding: 40px;
+        display: block;
+        width: 700px;
+        flex: 0 0 700px;
+        background-color: black;
+    }
 `;
 
-const InfoWrapper = styled.div`
-    flex: 1 1 100%;
-    position: relative;
+const InfoWrapper = styled.div` 
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    @media (min-device-width: 1100px) { 
+        flex: 1 1 100%;
+        position: relative;    
+    }
 `;
 
 const PageWrapper = styled.div`
@@ -181,8 +192,11 @@ const LogoHeader = styled.div`
     left: 0;
     top: 0;
     width: 100%;
-    padding: 0 40px 0 40px;
+    padding: 20px 20px 20px 20px;
     opacity: 0.6;
+    @media (min-device-width: 1100px) {
+        padding: 0 40px 0 40px;
+    }
 `;
 
 const NewsLetterHeader = styled.div`
