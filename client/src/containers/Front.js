@@ -276,10 +276,10 @@ class Front extends Component {
         return (
             <PageWrapper>
                 <NewsLetterWrapper>
-                    <LogoHeader>
-                        <WhiteOutlineShortLogo />
-                    </LogoHeader>
                     <NewsLetter onSubmit={this.handleEmailForm}>
+                        <NewsLetterHeader>
+                            <ColorLogo />
+                        </NewsLetterHeader>
                         <p>Snart lanserer vi Norges første nettavis for <span className="code-text">utviklere</span>. Vil du vite mer?</p>
 
                         {    !this.state.done && (
