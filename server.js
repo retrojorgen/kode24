@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const Mailchimp = require('mailchimp-api-v3');
-const mailchimp = new Mailchimp("0fd809014a4cbe5a701c11c81b205112-us18");
+const mailchimp = new Mailchimp(process.env.MAILCHIMP_KODE24);
 
 const app = express();
 
