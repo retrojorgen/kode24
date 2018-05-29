@@ -86,11 +86,11 @@ const NewsLetter = styled.form`
             border-bottom: 1px solid rgba(255,255,255,0.8);
             padding: 14px;
             font-size: 1em;
-            color: #3CB6D2;
+            color: #ff0071;
             flex: 1 1 100%;
             outline: none;
             &::placeholder {
-                color: rgba(#3CB6D2,0.8);
+                color: rgba(#ff0071,0.8);
             }
 
         }
@@ -126,7 +126,7 @@ const NewsLetter = styled.form`
         border-bottom: 1px solid rgba(255,255,255,0.1);
         padding-top: 10px;
         padding-bottom: 10px;
-        color: #27ddf2;
+        color: #ff0071;
     }
     .disclaimer {
         font-size: 0.8em;
@@ -308,7 +308,7 @@ class Front extends Component {
                         {
                             this.state.done && (
                                 <p className="thank-you">
-                                    Takk {this.state.name}! Vi gir deg beskjed på {this.state.email} så fort vi har mer informasjon
+                                    Takk {this.state.name}! Vi gir deg beskjed på {this.state.email} så snart vi har mer informasjon
                                 </p>
                             )
                         }
