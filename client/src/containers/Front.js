@@ -157,7 +157,6 @@ const NewsLetterWrapper = styled.div`
     justify-content: center;
     @media (min-device-width: 1100px) { 
         padding: 40px;
-        display: block;
         width: 700px;
         flex: 0 0 700px;
         background-color: black;
