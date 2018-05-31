@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import gruppebilde from '../images/gruppebilde.jpg';
 import gruppebildeNarrow from '../images/gruppebilde-narrow.jpg';
@@ -204,7 +204,7 @@ export default class AboutPage extends Component {
           <div className="content-right-col">
             
             <div className="inner-image">
-              <img src={gruppebilde} />  
+              <img src={gruppebilde} alt="bilde av Ole Petter og Jørgen" />  
             </div>
           </div>
         

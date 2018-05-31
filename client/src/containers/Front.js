@@ -1,12 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import styled, { keyframes } from 'styled-components';
-import Button, {DownArrow} from '../components/Buttons';
+import {DownArrow} from '../components/Buttons';
 import codeVideo from '../video/code.mov';
-import Topbar from './Topbar.js';
 import AboutPage from './AboutPage';
-import ColorLogo, { WhiteOutlineShortLogo } from '../components/svgs';
-
-const editorColor = "#33ddf3";
+import ColorLogo from '../components/svgs';
 
 const VideoFrame = styled.video`
     position: absolute;
@@ -173,8 +170,6 @@ const NewsLetter = styled.form`
     
 `;
 
-const ThankYou = styled.p`
-`;
 
 const NewsLetterWrapper = styled.div`
     flex: 0 0 100%;
@@ -225,18 +220,6 @@ const PageWrapper = styled.div`
         position: absolute;
         left: 0;
         top: 0;    
-    }
-`;
-
-const LogoHeader = styled.div`
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    padding: 20px 20px 20px 20px;
-    opacity: 0.6;
-    @media (min-width: 1100px) {
-        padding: 0 40px 0 40px;
     }
 `;
 
