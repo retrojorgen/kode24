@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 const defaultButton = styled.button`
     padding: 10px 10px;
@@ -38,6 +38,45 @@ class Button extends Component {
     }
 };
 
+const Jump = keyframes`
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(6px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+`;
+
+const DownArrowContainer = styled.span`
+    width: 40px;
+    height: 40px;
+    display: flex;
+    position: relative;
+    align-items: center;
+    transform: translateY(0px);
+    animation: ${Jump} 0.7s linear infinite;
+    &:before, &:after {
+        content: "";
+        height: 4px;
+        width: 50%;
+        background-color: white;
+    }
+    &:before {
+        transform: translateX(4px) rotate(45deg);
+    }
+    &:after {
+        transform: translateX(-4px) rotate(-45deg);
+    }
+`;
+
+
+const DownArrow = () => (
+    <DownArrowContainer />
+)
+
 class FlatButton extends Component {
     static propTypes = {
         onClick: PropTypes.func.isRequired,
@@ -54,4 +93,4 @@ class FlatButton extends Component {
 };
 
 export default Button;
-export { Button, FlatButton };
+export { Button, FlatButton, DownArrow };

@@ -1,24 +1,50 @@
-import React from 'react';
-import styled from 'styled-components';
+import React  from 'react';
+import styled, { keyframes } from 'styled-components';
+
+
+const WhiteToPink = keyframes`
+  0% {
+    stroke: #FFFFFF;
+  }
+  50% {
+    stroke: #ff0071;
+  }
+  70% {
+    stroke: #FFFFFF;
+  }
+  100% {
+    stroke: #FFFFFF;
+  }
+`;
+
+const PinkToWhite = keyframes`
+  0% {
+    
+    stroke: #ff0071;
+  }
+  50% {
+    stroke: #FFFFFF;
+  }
+  70% {
+    stroke: #ff0071;
+  }
+  100% {
+    stroke: #ff0071;
+  }
+`;
 
 
 const ColorLogoStyle = styled.svg`
   max-width: 100%;
-	.st0{fill:none;stroke:#FFFFFF;stroke-width:18; transition: all 1s ease-in-out}
+	.st0{fill:none;stroke:#FFFFFF;stroke-width:18; animation: ${WhiteToPink} 40s linear infinite}
 	.st1{fill:none;stroke:url(#b);stroke-width:18;}
-	.st2{fill:none;stroke:#ff0071;stroke-width:19; transition: all 1.3s ease-in-out}
+	.st2{fill:none;stroke:#ff0071;stroke-width:19; animation: ${PinkToWhite} 40s linear infinite 2s}
 	.st3{fill:none;stroke:url(#a);stroke-width:19;}
 	.st4{fill:#FFFFFF;}
 	.st5{fill:#ff0071;}
-  &:hover {
-    .st0{
-      stroke: #ff0071;
-    }
-    .st2{
-      stroke: #FFFFFF;
-    }
-  }
 `;
+
+
 
 const WhiteOutlineShortLogoStyle = styled.svg`
   max-width: 100%;

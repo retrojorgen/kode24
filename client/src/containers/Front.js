@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import styled, { keyframes } from 'styled-components';
-import Button from '../components/Buttons';
+import Button, {DownArrow} from '../components/Buttons';
 import codeVideo from '../video/code.mov';
 import Topbar from './Topbar.js';
 import AboutPage from './AboutPage';
@@ -15,6 +15,7 @@ const VideoFrame = styled.video`
     width: 100%;
     height: 100%;
     filter: blur(10px);
+    z-index: 1;
 `;
 
 const loading = keyframes`
@@ -125,14 +126,31 @@ const NewsLetter = styled.form`
         }
     }
     .more-info {
-        background-color: transparent;
-        border: 1px solid rgba(255,255,255,0.3);
-        &:hover {
-            background-color: rgba(255,255,255,0.1);
+        display: none;
+        
+        @media (min-width: 1040px) { 
+            display: inline-block;
+            background-color: transparent;
+            border: 1px solid rgba(255,255,255,0.3);
+            &:hover {
+                background-color: rgba(255,255,255,0.1);
+            }
+            &:active {
+                background-color: rgba(0,0,0,0.1);
+            }
         }
-        &:active {
-            background-color: rgba(0,0,0,0.1);
+    }
+    .more-info-mobile {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        p {
+            margin-bottom: 0;
         }
+        @media (min-width: 1040px) { 
+            display: none;
+        } 
     }
     .thank-you {
         border-top: 1px solid rgba(255,255,255,0.1);
@@ -168,13 +186,13 @@ const NewsLetterWrapper = styled.div`
     position: relative;
     z-index: 10;
     justify-content: center;
-    @media (min-device-width: 1100px) { 
+    @media (min-width: 1040px) { 
         padding: 40px;
         width: 500px;
         flex: 0 0 500px;
         background-color: transparent;
     }
-    @media (min-device-width: 1281px) { 
+    @media (min-width: 1281px) { 
         padding: 40px;
         width: 700px;
         flex: 0 0 700px;
@@ -188,7 +206,8 @@ const InfoWrapper = styled.div`
     top: 0;
     width: 100%;
     height: 100%;
-    @media (min-device-width: 1100px) { 
+    z-index: 5;
+    @media (min-width: 1040px) { 
         flex: 1 1 100%;
         position: relative;    
     }
@@ -196,7 +215,7 @@ const InfoWrapper = styled.div`
 
 const PageWrapper = styled.div`
     position: relative;
-    @media (min-device-width: 1100px) { 
+    @media (min-width: 1040px) { 
         flex: 1 1 100%;
         width: 100%;
         height: 100%;
@@ -216,7 +235,7 @@ const LogoHeader = styled.div`
     width: 100%;
     padding: 20px 20px 20px 20px;
     opacity: 0.6;
-    @media (min-device-width: 1100px) {
+    @media (min-width: 1100px) {
         padding: 0 40px 0 40px;
     }
 `;
@@ -301,7 +320,7 @@ class Front extends Component {
         console.log('v1');
         return (
             <PageWrapper>
-                <AboutPage toggleInfo={this.state.toggleInfo} />
+                
                 <NewsLetterWrapper>
                     <NewsLetter onSubmit={this.handleEmailForm}>
                         <NewsLetterHeader>
@@ -343,6 +362,13 @@ class Front extends Component {
                             Mer info
                         </button>
                         <p className="disclaimer">Informasjonen blir <u>kun</u> brukt i sammenheng med utsending av nyhetsbrev.</p>    
+                        <div className="more-info-mobile">
+                            <p>Les mer om kode24</p>
+                            <div className="down-arrow-container">
+                                <DownArrow />
+                            </div>
+                        </div>
+                        
                     </NewsLetter>
                     
                     
@@ -352,6 +378,7 @@ class Front extends Component {
                         <source src={codeVideo} />
                     </VideoFrame>
                 </InfoWrapper>
+                <AboutPage toggleInfo={this.state.toggleInfo} />
             </PageWrapper>
         )
     }
