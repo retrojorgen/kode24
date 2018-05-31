@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import triangle from '../images/triangle.png';
+import triangleWhite from '../images/triangle-white.png';
 import styled from 'styled-components';
+import * as pixi from 'pixi.js';
 
-const Canvas = styled.canvas`
+const PixiContainer = styled.div`
   position: absolute;
   left: 0;
   top: 0;
@@ -16,6 +18,8 @@ export default class LogoAnimation extends Component {
     context: undefined
   }
 
+  app = undefined;
+  counter = 0;
   containerRef = React.createRef();
   
   animations = [
@@ -23,59 +27,82 @@ export default class LogoAnimation extends Component {
   ];
 
 
-  addImage (image, rotation, increase, position) {
-    let newImage = new Image();
-    newImage.src = image;
-    this.animations.push({
-      image: newImage,
-      rotation: rotation,
-      increase: increase,
-      position: position
-    });
-  }
-
-  drawPolygon (ctx, image, x, y, w, h, a) {
-    ctx.translate(-x - y / 2, -y - h / 2);
-    ctx.rotate(a);
-    ctx.drawImage(image, 0, 0);
-    ctx.rotate(-a);
-    ctx.translate(x + w / 2, y + h / 2);
-    console.log('yo');
-  }
-  
-  drawPolygons () {
-    let context = this.state.context;
-    let animations = this.animations;
-    context.clearRect(0,0,100,100);
-    //context.save();
-    this.drawPolygon(context, animations[0].image, animations[0].position[0], animations[0].position[1], 140, 140, animations[0].rotation);
+  addImage () {
     
-    //context.restore();
-    animations[0].rotation = animations[0].rotation + animations[0].increase;
-    animations[0].rotation += animations[0].increase;
-    if(animations[0].rotation > 2) animations[0].rotation = 0;
-    //console.log('animating', animations);
-    window.requestAnimationFrame(this.drawPolygons.bind(this));
+    console.log('yay', sprite);
+    let direction = Math.round(Math.random() * (1 - 0) + 0);
+    let rotation = (Math.random() * (1 - 0) + 0) * 0.10;
+    let opacity = (Math.random() * (1 - 0) + 0);
+    let sprite = pixi.Sprite.fromImage(
+      direction > 0 ? `${triangle}` : `${triangleWhite}`
+    );
+    sprite.anchor.set(0.5);
+    sprite.x = Math.random() * (this.props.width - 0) + 0;
+    sprite.y = this.props.height;
+    sprite.width = 20;
+    sprite.height = 20;
+    sprite.alpha = opacity;
+    this.animations.push({
+      sprite: sprite,
+      direction: direction > 0 ? 'right' : 'left',
+      speed: 1.6,
+      rotation: rotation
+    });
+    this.app.stage.addChild(sprite);
   }
 
   componentDidMount () {
     //this.polygonPurple.src = `${triangle}`;
-    this.addImage(`${triangle}`, 0.001, 0.001, [60,500]);
-    this.addImage(`${triangle}`, 0.001, 0.002, [60,500]);
-    console.log(this.containerRef);
-    this.setState(
-      {
-        context: document.getElementById('logo-animation').getContext('2d'),
-      });
     
-    window.requestAnimationFrame(this.drawPolygons.bind(this));
+  }
+
+  componentDidUpdate () {
+
+    if(this.props.width > 0 && this.props.height > 0) {
+      this.app = new pixi.Application(this.props.width, this.props.height, {transparent: true});
+      this.containerRef.appendChild(this.app.view);
+      this.addImage();
+
+      this.app.ticker.add((delta) => {
+        for (let x = 0; x<this.animations.length; x++) {
+          this.animations[x].sprite.rotation += this.animations[x].rotation * delta;
+          this.animations[x].sprite.y -= 1 * delta;
+          this.animations[x].sprite.alpha -= 0.001;
+          
+          if(this.animations[x].direction === 'left')
+            this.animations[x].sprite.x -= this.animations[x].speed * delta;
+          else
+            this.animations[x].sprite.x += this.animations[x].speed * delta;
+          
+          if(this.animations[x].sprite.x + (this.animations[x].sprite.width/2) >= this.props.width && this.animations[x].direction === 'right') {
+            this.animations[x].direction = 'left';
+          
+          }
+
+          if(this.animations[x].sprite.x - (this.animations[x].sprite.width/2) <= 0 && this.animations[x].direction === 'left') {
+            this.animations[x].direction = 'right';
+          
+          }
+          
+          if(this.animations[x].speed < 0) {
+            this.animations[x].speed = 0;
+          } else {
+            this.animations[x].speed -= 0.002;
+          }
+        }
+        this.counter++;
+        if(this.counter > 100) {
+          this.addImage();
+          this.counter = 0;
+        }
+      });
+    }
   }
   
   render () {
-    console.log(this.props);
     return (
-      <Canvas id="logo-animation" width={this.props.width} height={this.props.height}>
-      </Canvas>
+      <PixiContainer width={this.props.width} height={this.props.height} innerRef={(comp => this.containerRef = comp)}>
+      </PixiContainer>
     )
   }
 }

@@ -315,8 +315,8 @@ class Front extends Component {
         return (
             <PageWrapper>
                 
-                <NewsLetterWrapper>
-                    <NewsLetter onSubmit={this.handleEmailForm} innerRef={comp => this.containerRef = comp}>
+                <NewsLetterWrapper innerRef={comp => this.containerRef = comp}>
+                    <NewsLetter onSubmit={this.handleEmailForm} >
                         <LogoAnimation width={this.state.containerWidth} height={this.state.containerHeight} />
                         <NewsLetterHeader>
                             <ColorLogo />
