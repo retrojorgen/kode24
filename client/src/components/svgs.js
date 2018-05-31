@@ -36,9 +36,9 @@ const PinkToWhite = keyframes`
 
 const ColorLogoStyle = styled.svg`
   max-width: 100%;
-	.st0{fill:none;stroke:#FFFFFF;stroke-width:18; animation: ${WhiteToPink} 40s linear infinite}
+	.st0{fill:none;stroke:#FFFFFF;stroke-width:18; animation: ${WhiteToPink} 100s 4s linear infinite}
 	.st1{fill:none;stroke:url(#b);stroke-width:18;}
-	.st2{fill:none;stroke:#ff0071;stroke-width:19; animation: ${PinkToWhite} 40s linear infinite 2s}
+	.st2{fill:none;stroke:#ff0071;stroke-width:19; animation: ${PinkToWhite} 100s linear infinite}
 	.st3{fill:none;stroke:url(#a);stroke-width:19;}
 	.st4{fill:#FFFFFF;}
 	.st5{fill:#ff0071;}
