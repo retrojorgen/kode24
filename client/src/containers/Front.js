@@ -4,6 +4,7 @@ import {DownArrow} from '../components/Buttons';
 import codeVideo from '../video/code.mov';
 import AboutPage from './AboutPage';
 import ColorLogo from '../components/svgs';
+import LogoAnimation from './LogoAnimation';
 
 const VideoFrame = styled.video`
     position: absolute;
@@ -237,12 +238,23 @@ class Front extends Component {
         name: "",
         loading: false,
         done: false,
-        toggleInfo: false
+        toggleInfo: false,
+        containerWidth: 0,
+        containerHeight: 0
     }
+
+    containerRef = React.createRef();
 
         // Fetch passwords after first mount
     componentDidMount() {
         this.testApi();
+        let { width, height} = this.containerRef.getBoundingClientRect();
+        width = Math.round(width);
+        height = Math.round(height);
+        this.setState({
+            containerWidth: width,
+            containerHeight: height
+        });
     }
 
     testApi = () => {
@@ -298,14 +310,14 @@ class Front extends Component {
     }
 
 
-
     render () {
-        console.log('v1');
+        console.log(this.state);
         return (
             <PageWrapper>
                 
                 <NewsLetterWrapper>
-                    <NewsLetter onSubmit={this.handleEmailForm}>
+                    <NewsLetter onSubmit={this.handleEmailForm} innerRef={comp => this.containerRef = comp}>
+                        <LogoAnimation width={this.state.containerWidth} height={this.state.containerHeight} />
                         <NewsLetterHeader>
                             <ColorLogo />
                         </NewsLetterHeader>
