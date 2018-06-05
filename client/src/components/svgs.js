@@ -69,7 +69,6 @@ class ColorLogo extends Component {
   }
 
   componentDidMount () {
-    console.log('yoyo');
     this.startAnimation();
   }
   render () {

@@ -251,7 +251,6 @@ class Front extends Component {
 
         // Fetch passwords after first mount
     componentDidMount() {
-        this.testApi();
         let { width, height} = this.containerRef.getBoundingClientRect();
         width = Math.round(width);
         height = Math.round(height);
@@ -261,18 +260,9 @@ class Front extends Component {
         });
     }
 
-    testApi = () => {
-        // Get the passwords and store them in state
-        fetch('/api/test')
-        .then(res => res.json())
-        .then(res => {
-            console.log('resultat', res);
-        });
-    }
 
     handleEmailForm = (event) => {
         event.preventDefault();
-        console.log('sending stuff', this.state.email);
         this.setState({loading: true});
         fetch('/api/email', {
             method: 'post',
@@ -291,23 +281,21 @@ class Front extends Component {
                 loading: false,
                 done: true
             });
-            console.log('success:', response);
         });
     }
 
     handleEmailInput = (value) => {
         this.setState({email: value});
-        console.log(this.state);
+  
     }
 
     handleNameInput = (value) => {
         this.setState({name: value});
-        console.log(this.state);
+    
     }
 
     handleMoreInfoClick = (event) => {
         event.preventDefault();
-        console.log('mer info');
         this.setState({
             toggleInfo: !this.state.toggleInfo
         });
@@ -315,13 +303,12 @@ class Front extends Component {
 
 
     render () {
-        console.log(this.state);
         return (
             <PageWrapper>
                 
                 <NewsLetterWrapper innerRef={comp => this.containerRef = comp}>
                     <NewsLetter onSubmit={this.handleEmailForm} >
-                        
+                        <LogoAnimation width={this.state.containerWidth} height={this.state.containerHeight} />
                         <div className="form-wrapper">
                             <NewsLetterHeader>
                                 <ColorLogo />

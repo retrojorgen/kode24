@@ -10,6 +10,7 @@ const PixiContainer = styled.div`
   top: 0;
   width: 100%;
   height: 100%;
+  z-index: 11;
 `;
 export default class LogoAnimation extends Component {
   state = {
@@ -29,7 +30,6 @@ export default class LogoAnimation extends Component {
 
   addImage () {
     
-    console.log('yay', sprite);
     let direction = Math.round(Math.random() * (1 - 0) + 0);
     let rotation = (Math.random() * (1 - 0) + 0) * 0.10;
     let opacity = (Math.random() * (1 - 0) + 0);
@@ -89,9 +89,21 @@ export default class LogoAnimation extends Component {
           } else {
             this.animations[x].speed -= 0.002;
           }
+
+          if(this.animations[x].sprite.y <= (this.animations[x].sprite.height/2)*-1) {
+            this.animations[x].toBeremoved = true;
+          }
         }
+        
+        // clean up out of bounds elements
+        for (let x = 0; x<this.animations.length; x++) {
+          if(this.animations[x].toBeremoved) {
+            this.animations.splice(x, 1);
+          }
+        }
+
         this.counter++;
-        if(this.counter > 400) {
+        if(this.counter > 100) {
           this.addImage();
           this.counter = 0;
         }
