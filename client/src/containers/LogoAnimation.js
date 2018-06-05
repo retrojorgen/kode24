@@ -76,12 +76,12 @@ export default class LogoAnimation extends Component {
           
           if(this.animations[x].sprite.x + (this.animations[x].sprite.width/2) >= this.props.width && this.animations[x].direction === 'right') {
             this.animations[x].direction = 'left';
-          
+            this.animations[x].rotation *= -1;
           }
 
           if(this.animations[x].sprite.x - (this.animations[x].sprite.width/2) <= 0 && this.animations[x].direction === 'left') {
             this.animations[x].direction = 'right';
-          
+            this.animations[x].rotation *= -1;
           }
           
           if(this.animations[x].speed < 0) {
