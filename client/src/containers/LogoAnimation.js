@@ -91,7 +91,7 @@ export default class LogoAnimation extends Component {
           }
         }
         this.counter++;
-        if(this.counter > 100) {
+        if(this.counter > 400) {
           this.addImage();
           this.counter = 0;
         }

@@ -59,6 +59,10 @@ const NewsLetter = styled.form`
     padding: 30px;
     border-radius: 10px;
     max-width: 500px;
+    .form-wrapper {
+        position: relative;
+        z-index: 11;
+    }
     .input-row {
         margin-bottom: 10px;
     }
@@ -318,52 +322,53 @@ class Front extends Component {
                 <NewsLetterWrapper innerRef={comp => this.containerRef = comp}>
                     <NewsLetter onSubmit={this.handleEmailForm} >
                         <LogoAnimation width={this.state.containerWidth} height={this.state.containerHeight} />
-                        <NewsLetterHeader>
-                            <ColorLogo />
-                        </NewsLetterHeader>
-                        <p>Snart lanserer vi Norges første nettavis for <span className="code-text">utviklere</span>. Vil du holde deg oppdatert?</p>
+                        <div className="form-wrapper">
+                            <NewsLetterHeader>
+                                <ColorLogo />
+                            </NewsLetterHeader>
+                            <p>Snart lanserer vi Norges første nettavis for <span className="code-text">utviklere</span>. Vil du holde deg oppdatert?</p>
 
-                        {    !this.state.done && (
-                                <Fragment>
-                                    <div className="input-row">
-                                        <label>
-                                            <input type="text" required value={this.state.name} onChange={(event) => this.handleNameInput(event.target.value)} placeholder="navn" />
-                                        </label>
-                                    </div>
-                                    <div className="input-row">
-                                        <label>
-                                            <input type="email" required value={this.state.email} onChange={(event) => this.handleEmailInput(event.target.value)} placeholder="e-post" />
-                                        </label>
-                                    </div>
-                                    <button type="submit">Hold meg oppdatert
-                                        {
-                                            this.state.loading && (
-                                                <Loading />
-                                            )
-                                        }
-                                    </button>
-                                </Fragment>
-                            )
-                        }
+                            {    !this.state.done && (
+                                    <Fragment>
+                                        <div className="input-row">
+                                            <label>
+                                                <input type="text" required value={this.state.name} onChange={(event) => this.handleNameInput(event.target.value)} placeholder="navn" />
+                                            </label>
+                                        </div>
+                                        <div className="input-row">
+                                            <label>
+                                                <input type="email" required value={this.state.email} onChange={(event) => this.handleEmailInput(event.target.value)} placeholder="e-post" />
+                                            </label>
+                                        </div>
+                                        <button type="submit">Hold meg oppdatert
+                                            {
+                                                this.state.loading && (
+                                                    <Loading />
+                                                )
+                                            }
+                                        </button>
+                                    </Fragment>
+                                )
+                            }
 
-                        {
-                            this.state.done && (
-                                <p className="thank-you">
-                                    Takk {this.state.name}! Vi gir deg beskjed på {this.state.email} så snart vi har mer informasjon
-                                </p>
-                            )
-                        }
-                        <button className="more-info" onClick={(event) => this.handleMoreInfoClick(event)}>
-                            Mer info
-                        </button>
-                        <p className="disclaimer">Informasjonen blir <u>kun</u> brukt i sammenheng med utsending av nyhetsbrev.</p>    
-                        <div className="more-info-mobile">
-                            <p>Les mer om kode24</p>
-                            <div className="down-arrow-container">
-                                <DownArrow />
+                            {
+                                this.state.done && (
+                                    <p className="thank-you">
+                                        Takk {this.state.name}! Vi gir deg beskjed på {this.state.email} så snart vi har mer informasjon
+                                    </p>
+                                )
+                            }
+                            <button className="more-info" onClick={(event) => this.handleMoreInfoClick(event)}>
+                                Mer info
+                            </button>
+                            <p className="disclaimer">Informasjonen blir <u>kun</u> brukt i sammenheng med utsending av nyhetsbrev.</p>    
+                            <div className="more-info-mobile">
+                                <p>Les mer om kode24</p>
+                                <div className="down-arrow-container">
+                                    <DownArrow />
+                                </div>
                             </div>
                         </div>
-                        
                     </NewsLetter>
                     
                     
