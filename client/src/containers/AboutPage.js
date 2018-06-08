@@ -102,7 +102,7 @@ const AboutPageWrapper = styled.div`
         overflow: auto;
         transition: all 0.25s ease-in-out 0.2s;
         opacity: 0;
-        transform: rotateY(45deg) translateX(-100%);
+        transform: rotateY(90deg) translateX(-100%);
         position: absolute;
         left: 0;
         top: 0;
@@ -153,7 +153,7 @@ const AboutPageWrapper = styled.div`
         .inner-image {
           position: absolute;
           transition: all 0.25s ease-in-out;
-          transform: rotateY(45deg) translateX(-100%);
+          transform: rotateY(90deg) translateX(-100%);
           opacity: 0;
           left: 0;
           top: 0;
