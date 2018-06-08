@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import gruppebilde from '../images/gruppebilde.jpg';
 import gruppebildeNarrow from '../images/gruppebilde-narrow.jpg';
+import allerLogo from '../images/aller-logo.png';
+import startupLabLogo from '../images/startup-lab-logo.png';
+
 
 const AboutPageWrapper = styled.div`
   position: relative;
@@ -69,6 +72,9 @@ const AboutPageWrapper = styled.div`
     position: relative;
     perspective: 1000px;
     background-color: #ff0071;
+    a {
+      cursor: pointer;
+    }
     @media (min-width: 1040px) {
       background-color: transparent;
     }
@@ -76,7 +82,14 @@ const AboutPageWrapper = styled.div`
       z-index: 10;
       
       
-      
+      .logos {
+        margin-top: 20px;
+        text-align: center;
+        img {
+          max-height:80px;
+          padding: 20px;
+        }
+      }
       max-width: 400px;
       margin: 0 auto;
       padding: 40px;
@@ -200,6 +213,10 @@ export default class AboutPage extends Component {
                 <p>Ole Petter har vært journalist siden 2005, i blant annet Computerworld og Dinside/Dagbladet, og har kodet på soverommet siden 90-tallet. </p>
                 <h2>Jørgen Jacobsen</h2>
                 <p>Jørgen har vært utvikler siden 2009, i blant annet Fronter, Nettavisen, Schibsted og Dagbladet. Dessuten vant han sin vekt i Pringles på The Gathering 2000.</p>
+              </div>
+              <div className="logos">
+                <a href="http://www.aller.no"><img src={allerLogo} /></a>
+                <a href="http://www.startuplab.no"><img src={startupLabLogo} /></a>
               </div>
             </div>
           </div>
