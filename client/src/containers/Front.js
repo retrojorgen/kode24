@@ -4,7 +4,7 @@ import {DownArrow} from '../components/Buttons';
 import codeVideo from '../video/code.mov';
 import AboutPage from './AboutPage';
 import ColorLogo from '../components/svgs';
-import LogoAnimation from './LogoAnimation';
+//import LogoAnimation from './LogoAnimation';
 
 const VideoFrame = styled.video`
     position: absolute;
@@ -308,7 +308,6 @@ class Front extends Component {
                 
                 <NewsLetterWrapper innerRef={comp => this.containerRef = comp}>
                     <NewsLetter onSubmit={this.handleEmailForm} >
-                        <LogoAnimation width={this.state.containerWidth} height={this.state.containerHeight} />
                         <div className="form-wrapper">
                             <NewsLetterHeader>
                                 <ColorLogo />
