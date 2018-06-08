@@ -214,6 +214,9 @@ export default class AboutPage extends Component {
                 <h2>Jørgen Jacobsen</h2>
                 <p>Jørgen har vært utvikler siden 2009, i blant annet Fronter, Nettavisen, Schibsted og Dagbladet. Dessuten vant han sin vekt i Pringles på The Gathering 2000.</p>
               </div>
+              <div>
+                Har du innspill eller spørsmål? Send oss en e-post på <a href="mailto:hei@kode24.no">hei@kode24.no</a>, eller <a href="https://goo.gl/forms/Z9vY8qSexJN9hJuo2">ta vår raske spørreundersøkelse!</a>
+              </div>
               <div className="logos">
                 <a href="http://www.aller.no"><img src={allerLogo} /></a>
                 <a href="http://www.startuplab.no"><img src={startupLabLogo} /></a>
