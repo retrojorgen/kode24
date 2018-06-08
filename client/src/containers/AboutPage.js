@@ -209,7 +209,7 @@ export default class AboutPage extends Component {
                 <p>Vi skal skrive alt fra utviklernes perspektiv.</p>
                 <p>Hva slags rammeverk bruker egentlig norske utviklere? Hva fungerer? Hva fungerer ikke? Og hvordan blir norske tjenester og apper laget?</p>
                 <h1>Når kommer Kode24?</h1>
-                <p>Snart! Hvis du melder deg på nyhetsbrevet blir du en av de første som får høre om lanseringen.</p>
+                <p>Vi jobber med saken! Hvis du melder deg på nyhetsbrevet blir du en av de første som får høre om lanseringen.</p>
                 <h1>Hvem er Kode24?</h1>
                 <h2>Ole Petter Baugerød Stokke</h2>
                 <p>Ole Petter har vært journalist siden 2005, i blant annet Computerworld og Dinside/Dagbladet, og har kodet på soverommet siden 90-tallet. </p>
