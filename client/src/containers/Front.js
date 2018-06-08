@@ -159,7 +159,10 @@ const NewsLetter = styled.form`
         border-bottom: 1px solid rgba(255,255,255,0.1);
         padding-top: 10px;
         padding-bottom: 10px;
-        color: #ff0071;
+        color: white;
+        a {
+            color: inherit;
+        }
     }
     .disclaimer {
         font-size: 0.8em;
