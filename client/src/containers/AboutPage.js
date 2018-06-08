@@ -72,9 +72,7 @@ const AboutPageWrapper = styled.div`
     position: relative;
     perspective: 1000px;
     background-color: #ff0071;
-    a {
-      cursor: pointer;
-    }
+    
     @media (min-width: 1040px) {
       background-color: transparent;
     }
@@ -89,6 +87,10 @@ const AboutPageWrapper = styled.div`
           max-height:80px;
           padding: 20px;
         }
+      }
+      a {
+        cursor: pointer;
+        color: inherit;
       }
       max-width: 400px;
       margin: 0 auto;
@@ -205,7 +207,7 @@ export default class AboutPage extends Component {
                 <p>Kode24 skal bli norges første nettavis for utviklere.</p>
                 <p></p>
                 <p>Vi skal skrive alt fra utviklernes perspektiv.</p>
-                <p>Hva slags rammeverk bruker egentlig norske utviklere? Hva fungerer? Hva fungerer ikke? Og hvordan blir norske nettsider og tjenester laget?</p>
+                <p>Hva slags rammeverk bruker egentlig norske utviklere? Hva fungerer? Hva fungerer ikke? Og hvordan blir norske tjenester og apper laget?</p>
                 <h1>Når kommer Kode24?</h1>
                 <p>Snart! Hvis du melder deg på nyhetsbrevet blir du en av de første som får høre om lanseringen.</p>
                 <h1>Hvem er Kode24?</h1>
