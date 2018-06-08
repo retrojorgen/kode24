@@ -188,16 +188,18 @@ export default class AboutPage extends Component {
             
             <div className="mid-col-content">
               <div>
-                <h1>Hva er kode24?</h1>
-                <p>Kode24 er en ny norsk nettside/magasin som vil fokusere på å dekke norsk teknologibransje fra et utviklerperspektiv.</p>
-                <p>Her vil du finne ut alt om hvilke rammeverk, teknologier og teknikker blir brukt til å bygge norske tjenester og applikasjoner. Redaksjonen vil bestå av utviklere og teknologer.</p>
-                <h1>Når kommer siden?</h1>
+                <h1>Hva er Kode24?</h1>
+                <p>Kode24 skal bli norges første nettavis for utviklere.</p>
+                <p></p>
+                <p>Vi skal skrive alt fra utviklernes perspektiv.</p>
+                <p>Hva slags rammeverk bruker egentlig norske utviklere? Hva fungerer? Hva fungerer ikke? Og hvordan blir norske nettsider og tjenester laget?</p>
+                <h1>Når kommer Kode24?</h1>
                 <p>Snart! Hvis du melder deg på nyhetsbrevet blir du en av de første som får høre om lanseringen.</p>
-                <h1>Hvem er i redaksjonen?</h1>
+                <h1>Hvem er Kode24?</h1>
                 <h2>Ole Petter Baugerød Stokke</h2>
-                <p>Ole Petter har lang fartstid som journalist i it-bransjen, med bakgrunn i Computerworld, og forbrukernettstedet DinSide</p>
+                <p>Ole Petter har vært journalist siden 2005, i blant annet Computerworld og Dinside/Dagbladet, og har kodet på soverommet siden 90-tallet. </p>
                 <h2>Jørgen Jacobsen</h2>
-                <p>Jørgen er utvikler med lang fartstid, blant annet i Fronter, Nettavisen, Schibsted og Aller Media</p>
+                <p>Jørgen har vært utvikler siden 2009, i blant annet Fronter, Nettavisen, Schibsted og Dagbladet. Dessuten vant han sin vekt i Pringles på The Gathering 2000.</p>
               </div>
             </div>
           </div>

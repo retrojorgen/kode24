@@ -345,11 +345,11 @@ class Front extends Component {
                                 )
                             }
                             <button className="more-info" onClick={(event) => this.handleMoreInfoClick(event)}>
-                                Mer info
+                                Om oss
                             </button>
                             <p className="disclaimer">Informasjonen blir <u>kun</u> brukt i sammenheng med utsending av nyhetsbrev.</p>    
                             <div className="more-info-mobile">
-                                <p>Les mer om kode24</p>
+                                <p>Om oss</p>
                                 <div className="down-arrow-container">
                                     <DownArrow />
                                 </div>
