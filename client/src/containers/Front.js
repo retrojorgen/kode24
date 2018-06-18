@@ -349,7 +349,7 @@ class Front extends Component {
                                     <p className="thank-you">
                                         Takk {this.state.name}! Vi gir deg beskjed på {this.state.email} så snart vi har mer informasjon. <br/>
                                         <br/>
-                                Har du to minutter til å gjøre siden bedre? <a href="https://goo.gl/forms/Z9vY8qSexJN9hJuo2">Ta gjerne vår kjappe spørreundersøkelse!</a>
+                                Har du to minutter til å gjøre Kode24 bedre? <a href="https://goo.gl/forms/Z9vY8qSexJN9hJuo2">Ta gjerne vår kjappe spørreundersøkelse!</a>
                                     </p>
                                 )
                             }
