@@ -4,6 +4,7 @@ import {DownArrow} from '../components/Buttons';
 import codeVideo from '../video/code.mov';
 import AboutPage from './AboutPage';
 import ColorLogo from '../components/svgs';
+import codeBackground from '../images/kode-bakgrunn.jpg';
 //import LogoAnimation from './LogoAnimation';
 
 const VideoFrame = styled.video`
@@ -210,6 +211,9 @@ const InfoWrapper = styled.div`
     width: 100%;
     height: 100%;
     z-index: 5;
+    background-image: url(${codeBackground});
+    background-size: cover;
+    background-repeat: no-repeat;
     @media (min-width: 1040px) { 
         flex: 1 1 100%;
         position: relative;    
@@ -365,9 +369,6 @@ class Front extends Component {
                     
                 </NewsLetterWrapper>
                 <InfoWrapper>
-                    <VideoFrame autoPlay loop>
-                        <source src={codeVideo} />
-                    </VideoFrame>
                 </InfoWrapper>
                 <AboutPage toggleInfo={this.state.toggleInfo} />
             </PageWrapper>

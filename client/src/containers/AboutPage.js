@@ -204,10 +204,11 @@ export default class AboutPage extends Component {
             <div className="mid-col-content">
               <div>
                 <h1>Hva er Kode24?</h1>
-                <p>Kode24 skal bli norges første nettavis for utviklere.</p>
-                <p></p>
-                <p>Vi skal skrive alt fra utviklernes perspektiv.</p>
-                <p>Hva slags rammeverk bruker egentlig norske utviklere? Hva fungerer? Hva fungerer ikke? Og hvordan blir norske tjenester og apper laget?</p>
+                <p>Kode24 skal bli Norges første nettavis for utviklere.</p>
+                <p>Der hvor andre dekker kontrakter og direktører, skal Kode24 dekke koden og koderne.</p>
+                <p>For hvilke rammeverk bruker egentlig norske utviklere? Hva fungerer? 
+                Hva fungerer ikke? Hvordan blir norske tjenester og apper laget? Og hva bør du lære deg akkurat nå?</p>
+                <p>Kode24 skal dekke norsk kode for norske kodere; alltid fra utviklernes perspektiv.</p>
                 <h1>Når kommer Kode24?</h1>
                 <p>Vi jobber med saken! Hvis du melder deg på nyhetsbrevet blir du en av de første som får høre om lanseringen.</p>
                 <h1>Hvem er Kode24?</h1>
