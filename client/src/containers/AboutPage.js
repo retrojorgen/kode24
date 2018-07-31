@@ -10,7 +10,7 @@ const AboutPageWrapper = styled.div`
   position: relative;
   display: flex;
   
-  color: #252320;
+  color: white;
   z-index: 9;
   flex-direction: column;
   align-items: center;
@@ -71,7 +71,7 @@ const AboutPageWrapper = styled.div`
     background-color: transparent;
     position: relative;
     perspective: 1000px;
-    background-color: #ff0071;
+    background-color: #c100e3;
     
     @media (min-width: 1040px) {
       background-color: transparent;
@@ -97,22 +97,28 @@ const AboutPageWrapper = styled.div`
       padding: 40px;
       display: block;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       h1 {
         font-weight: bold;
         font-size: 1.4em;
+        margin-top: 1.4em;
+        margin-bottom: 1em;
+        text-align: center;
+        text-transform: uppercase;
       }
       p {
         font-size: 0.8em;
+        line-height: 1.6;
       }
       h2 {
         font-size: 1.2em;
         border-bottom: 1px solid #252320;
+        text-align: center;
       }
 
       @media (min-width: 1040px) { 
         max-width: none;
-        background-color: #ff0071;
+        background-color: #c100e3;
         display: flex;
         overflow: auto;
         transition: all 0.25s ease-in-out 0.2s;
@@ -154,7 +160,7 @@ const AboutPageWrapper = styled.div`
       position: relative;
       
       padding: 20px;
-      background-color: #ff0071;
+      background-color: #c100e3;
 
       background-position: center center;
       img {
@@ -221,8 +227,8 @@ export default class AboutPage extends Component {
                 Har du innspill eller spørsmål? Send oss en e-post på <a href="mailto:hei@kode24.no">hei@kode24.no</a>, eller <a href="https://goo.gl/forms/Z9vY8qSexJN9hJuo2">ta vår raske spørreundersøkelse!</a>
               </div>
               <div className="logos">
-                <a href="http://www.aller.no"><img src={allerLogo} /></a>
-                <a href="http://www.startuplab.no"><img src={startupLabLogo} /></a>
+                <a href="http://www.aller.no"><img src={allerLogo} alt="Aller logo" /></a>
+                <a href="http://www.startuplab.no"><img src={startupLabLogo} alt="Startup Lab logo" /></a>
               </div>
             </div>
           </div>

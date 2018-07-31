@@ -10,7 +10,7 @@ const ColorLogoStyle = styled.svg`
     stroke-width:18; 
     transition: all 1s ease-in-out 0.2s;
     &.animate {
-      stroke:#ff0071;
+      stroke:#c100e3;
       transition: all 1s ease-in-out;
     }
   }
@@ -21,7 +21,7 @@ const ColorLogoStyle = styled.svg`
   }
 	.st2 {
     fill:none;
-    stroke:#ff0071;
+    stroke:#c100e3;
     stroke-width:19; 
     transition: all 1s ease-in-out;
     &.animate {
@@ -38,7 +38,7 @@ const ColorLogoStyle = styled.svg`
     fill:#FFFFFF;
   }
 	.st5 {
-    fill:#ff0071;
+    fill:#c100e3;
   }
 
 `;

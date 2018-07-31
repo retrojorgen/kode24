@@ -1,21 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import styled, { keyframes } from 'styled-components';
 import {DownArrow} from '../components/Buttons';
-import codeVideo from '../video/code.mov';
 import AboutPage from './AboutPage';
 import ColorLogo from '../components/svgs';
 import codeBackground from '../images/kode-bakgrunn.jpg';
-//import LogoAnimation from './LogoAnimation';
+import { NewsLetter } from '../components/Forms';
 
-const VideoFrame = styled.video`
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    filter: blur(10px);
-    z-index: 1;
-`;
 
 const loading = keyframes`
     0% {
@@ -54,131 +44,6 @@ const Loading = styled.div`
         animation: ${loading} 2s ease-in-out 1s infinite;
     }
 `;
-
-
-const NewsLetter = styled.form`
-    padding: 30px;
-    border-radius: 10px;
-    max-width: 500px;
-    .form-wrapper {
-        position: relative;
-        z-index: 11;
-    }
-    .input-row {
-        margin-bottom: 10px;
-    }
-    h1 {
-        font-size: 3em;
-        color: white;
-        text-transform: lowercase;
-        text-align: center;
-        margin: 0;
-    }
-    p {
-        color: white;
-        font-size: 1.2em;
-        text-align: center;
-        line-height: 1.6em;
-    }
-
-    label {
-        color: #ff0071;
-        display: flex; 
-        align-items: center;
-        input {
-            background-color: transparent;
-            border: 0;
-            border-bottom: 1px solid rgba(255,255,255,0.8);
-            padding: 14px;
-            font-size: 1em;
-            color: #ff0071;
-            flex: 1 1 100%;
-            outline: none;
-            &::placeholder {
-                color: rgba(#ff0071,0.8);
-            }
-
-        }
-        span {
-            white-space: nowrap;
-            margin-right: 10px;
-        }
-    }
-    button {
-        position: relative;
-        padding: 14px 30px;
-        background-color: #ff0071;
-        border: 0;
-        text-align: center;
-        color: black;
-        text-transform: uppercase;
-        font-size: 0.8em;
-        display: block;
-        width: 100%;
-        font-size: 1em;
-        color: white;
-        margin-top: 20px;
-        border-radius: 0;
-        outline: none;
-        cursor: pointer;
-        &:hover {
-            background-color: #ff4899;
-        }
-        &:active {
-            background-color: #d60863;
-        }
-    }
-    .more-info {
-        display: none;
-        
-        @media (min-width: 1040px) { 
-            display: inline-block;
-            background-color: transparent;
-            border: 1px solid rgba(255,255,255,0.3);
-            &:hover {
-                background-color: rgba(255,255,255,0.1);
-            }
-            &:active {
-                background-color: rgba(0,0,0,0.1);
-            }
-        }
-    }
-    .more-info-mobile {
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        p {
-            margin-bottom: 0;
-        }
-        @media (min-width: 1040px) { 
-            display: none;
-        } 
-    }
-    .thank-you {
-        border-top: 1px solid rgba(255,255,255,0.1);
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-        padding-top: 10px;
-        padding-bottom: 10px;
-        color: white;
-        a {
-            color: inherit;
-        }
-    }
-    .disclaimer {
-        font-size: 0.8em;
-        margin-top: 20px;
-        color: #969696;
-    }
-    .code-text {
-        color: #ff0071;
-    }
-    .code-highlight-text {
-        color: #27ddf2;
-    }
-    
-`;
-
 
 const NewsLetterWrapper = styled.div`
     flex: 0 0 100%;
