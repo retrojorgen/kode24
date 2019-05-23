@@ -6,12 +6,7 @@ import Inline from "./Inline";
 class App extends Component {
   render() {
     return (
-      <BrowserRouter className="app">
-        <div>
-          <Route exact path="/" component={Inline} />
-          <Route path="/inline" component={Inline} />
-        </div>
-      </BrowserRouter>
+      <Inline></Inline>
     );
   }
 }
