@@ -20,8 +20,8 @@ const AdWrapper = styled.div`
   }
   #left-triangle {
     background-color: black;
-    clip-path: url(#cp);
-    -webkit-clip-path: url(#cp);
+    clip-path: url(#newsletter-triangle);
+    -webkit-clip-path: url(#newsletter-triangle);
     width: 400px;
     height: 400px;
     background-size: cover;
@@ -139,7 +139,7 @@ class Inline extends Component {
         </BackgroundAnimation>
         <svg width="0" height="0">
           <defs>
-            <clipPath id="cp">
+            <clipPath id="newsletter-triangle">
               <path class="st0" d="M0.1,1.3" />
               <polygon points="-0.1,1.5 203.8,400.6 400.8,1.5 " />
             </clipPath>
