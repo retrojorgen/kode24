@@ -116,8 +116,6 @@ class Inline extends Component {
   };
 
   render() {
-    console.log(this.state.triangle);
-    console.log("hest", this.state.triangle);
     return (
       <AdWrapper>
         <BackgroundAnimation

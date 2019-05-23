@@ -6,7 +6,7 @@
  */
 
 const AddToEmailList = (formData, success, fail) => {
-  fetch("https://kode24-nyhetsbrev.herokuapp.com//api/email", {
+  fetch("https://kode24-nyhetsbrev.herokuapp.com/api/email", {
     method: "post",
     body: JSON.stringify(formData),
     headers: {
