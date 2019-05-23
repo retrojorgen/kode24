@@ -8,9 +8,7 @@ import { AddToEmailList } from "../api/Mailchimp";
 const AdWrapper = styled.div`
   width: 100%;
   background-color: #17071e;
-  position: absolute;
-  left: 0;
-  top: 0;
+  position: relative;
   overflow: hidden;
   display: flex;
   justify-content: flex-end;
