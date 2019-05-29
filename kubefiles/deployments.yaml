@@ -2,15 +2,15 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: { { env "REPONAME" } }
-  namespace: { { env "REPONAME" } }
+  name: {{env "REPONAME" }}
+  namespace: {{env "REPONAME" }}
 spec:
   replicas: 2
   revisionHistoryLimit: 2
   template:
     metadata:
       labels:
-        app: { { env "REPONAME" } }
+        app: {{env "REPONAME"}}
       annotations:
         prometheus.io/scrape: "true"
     spec:
@@ -18,12 +18,9 @@ spec:
         - name: app
           resources:
             limits:
-              cpu: "0.4"
+              cpu: "0.2"
               memory: 200Mi
-            requests:
-              cpu: "0.4"
-              memory: 200Mi
-          image: { { env "IMAGE" } }
+          image: {{env "IMAGE" }}
           ports:
             - containerPort: 3000
               name: http-port
