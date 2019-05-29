@@ -51,6 +51,10 @@ app.post("/api/email", (req, res) => {
     });
 });
 
+app.get("/_healthz", (req, res) => {
+  res.status(200).send();
+});
+
 // The "catchall" handler: for any request that doesn't
 // match one above, send back React's index.html file.
 app.get("*", (req, res) => {
