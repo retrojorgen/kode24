@@ -1,0 +1,44 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: { { env "REPONAME" } }
+  namespace: { { env "REPONAME" } }
+spec:
+  replicas: 2
+  revisionHistoryLimit: 2
+  template:
+    metadata:
+      labels:
+        app: { { env "REPONAME" } }
+      annotations:
+        prometheus.io/scrape: "true"
+    spec:
+      containers:
+        - name: app
+          resources:
+            limits:
+              cpu: "0.4"
+              memory: 200Mi
+            requests:
+              cpu: "0.4"
+              memory: 200Mi
+          image: { { env "IMAGE" } }
+          ports:
+            - containerPort: 3000
+              name: http-port
+          livenessProbe:
+            httpGet:
+              path: /_healthz
+              port: 3000
+            timeoutSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /_healthz
+              port: 3000
+            timeoutSeconds: 5
+          envFrom:
+            - configMapRef:
+                name: configuration
+            - secretRef:
+                name: secrets
