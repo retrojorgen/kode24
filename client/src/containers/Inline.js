@@ -4,7 +4,6 @@ import styled, { keyframes } from "styled-components";
 import { NewsLetter } from "../components/Forms";
 import { Triangle } from "../components/AnimationItems";
 import { AddToEmailList } from "../api/Mailchimp";
-import blowup from '../images/giphy-blowup.gif';
 
 const AdWrapper = styled.div`
   width: 100%;
@@ -32,7 +31,7 @@ const AdWrapper = styled.div`
     margin-left: -200px;
     opacity: 0.4;
     left: 40px;
-    background-image: url(${blowup});
+    background-image: url("https://www.dagbladet.no/files/2019/10/25/giphy-blowup.gif");
     background-position: right center;
     transform: scale(-1, 1);
     @media (min-width: 700px) {
