@@ -52,13 +52,13 @@ const NewsLetter = styled.form`
       border-bottom: 1px solid rgba(255, 255, 255, 0.8);
       padding: 14px;
       font-size: 1em;
-      color: #d657ec;
+      color: rgb(0, 0, 0);
       letter-spacing: 1px;
       flex: 1 1 100%;
       outline: none;
       margin-top: 10px;
       &::placeholder {
-        color: rgba(#c100e3, 0.8);
+        color: rgb(0, 0, 0);
       }
     }
     span {

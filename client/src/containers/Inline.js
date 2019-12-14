@@ -123,17 +123,11 @@ class Inline extends Component {
           color="rgba(120, 42, 156, 1)"
           glow="0 0 10px 10px rgba(145, 97, 168, 0.06)"
         >
-          <Triangle speed="20s" offset="0s" />
-          <Triangle speed="20s" offset="2s" />
-          <Triangle speed="20s" offset="4s" />
-          <Triangle speed="20s" offset="6s" />
-          <Triangle speed="20s" offset="8s" />
-          <Triangle speed="20s" offset="10s" />
-          <Triangle speed="20s" offset="12s" />
-          <Triangle speed="20s" offset="14s" />
-          <Triangle speed="20s" offset="16s" />
-          <Triangle speed="20s" offset="18s" />
-          <Triangle speed="20s" offset="20s" />
+          <Triangle speed="8s" offset="0s" />
+          <Triangle speed="8s" offset="2s" />
+          <Triangle speed="8s" offset="4s" />
+          <Triangle speed="8s" offset="6s" />
+          <Triangle speed="8s" offset="8s" />
         </BackgroundAnimation>
         <svg width="0" height="0">
           <defs>
