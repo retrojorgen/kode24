@@ -1,5 +1,5 @@
-import React from 'react';
-import styled, { keyframes } from 'styled-components';
+import React from "react";
+import styled, { keyframes } from "styled-components";
 
 const spin = keyframes`
     0% {
@@ -12,17 +12,17 @@ const spin = keyframes`
 
 const scalehideleft = keyframes`
     0% {
-        transform: rotateZ(360deg) translateZ(0) scale(1) translateX(4px);
+        transform: rotateZ(360deg) translateZ(0) scale(1);
         opacity: 0;
     }
 
     50% {
-        transform: rotateZ(360deg) translateZ(0) translateY(15px) translateX(4px) scale(5) rotate(10deg);
+        transform: rotateZ(360deg) translateZ(0)  scale(2);
         opacity: 1;
     }
 
     100% {    
-        transform: rotateZ(360deg) translateZ(0) translateY(15px) translateX(4px) scale(10) rotate(10deg);
+        transform: rotateZ(360deg) translateZ(0)  scale(4);
         opacity: 0;
     }
 `;

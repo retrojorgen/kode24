@@ -1,0 +1,17 @@
+jobs:
+  build:
+    <<: *container_defaults
+    steps:
+      - checkout
+      - <<: *setup_remote_docker
+      - <<: *docker_build
+      - <<: *setup_tests
+      - <<: *store_test_results
+      - <<: *store_test_artifacts
+      - <<: *docker_push_gcr
+
+  deploy_prod:  *deploy_prod
+  deploy_stage: *deploy_stage
+  deploy_test:  *deploy_test
+
+workflows: *default_workflows

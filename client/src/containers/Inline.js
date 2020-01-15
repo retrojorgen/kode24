@@ -31,7 +31,7 @@ const AdWrapper = styled.div`
     margin-left: -200px;
     opacity: 0.4;
     left: 40px;
-    background-image: url(https://media1.giphy.com/media/26FxqHY1cNrGurwac/giphy.gif);
+    background-image: url("https://www.dagbladet.no/files/2019/10/25/giphy-blowup.gif");
     background-position: right center;
     transform: scale(-1, 1);
     @media (min-width: 700px) {
@@ -123,17 +123,11 @@ class Inline extends Component {
           color="rgba(120, 42, 156, 1)"
           glow="0 0 10px 10px rgba(145, 97, 168, 0.06)"
         >
-          <Triangle speed="20s" offset="0s" />
-          <Triangle speed="20s" offset="2s" />
-          <Triangle speed="20s" offset="4s" />
-          <Triangle speed="20s" offset="6s" />
-          <Triangle speed="20s" offset="8s" />
-          <Triangle speed="20s" offset="10s" />
-          <Triangle speed="20s" offset="12s" />
-          <Triangle speed="20s" offset="14s" />
-          <Triangle speed="20s" offset="16s" />
-          <Triangle speed="20s" offset="18s" />
-          <Triangle speed="20s" offset="20s" />
+          <Triangle speed="8s" offset="0s" />
+          <Triangle speed="8s" offset="2s" />
+          <Triangle speed="8s" offset="4s" />
+          <Triangle speed="8s" offset="6s" />
+          <Triangle speed="8s" offset="8s" />
         </BackgroundAnimation>
         <svg width="0" height="0">
           <defs>
