@@ -18,7 +18,7 @@ const AdWrapper = styled.div`
     align-items: row;
     border: 10px solid #171716;
   }
-  #left-triangle {
+  #left-form-triangle {
     background-color: black;
     clip-path: url(#newsletter-triangle);
     -webkit-clip-path: url(#newsletter-triangle);
@@ -143,7 +143,7 @@ class Inline extends Component {
             </clipPath>
           </defs>
         </svg>
-        <div id="left-triangle" />
+        <div id="left-form-triangle" />
         <AdText>1500 påmeldt!</AdText>
         <NewsLetter onSubmit={this.handleEmailForm}>
           <h1>Blås opp hjernen!</h1>
@@ -159,18 +159,19 @@ class Inline extends Component {
           {!this.state.done && (
             <Fragment>
               <div className="input-row">
-                <label>
+                <label for="navn">
                   <input
                     type="text"
                     required
                     value={this.state.name}
                     onChange={event => this.handleNameInput(event.target.value)}
                     placeholder="navn"
+                    aria-label="navn"
                   />
                 </label>
               </div>
               <div className="input-row">
-                <label>
+                <label for="email">
                   <input
                     type="email"
                     required
@@ -178,7 +179,9 @@ class Inline extends Component {
                     onChange={event =>
                       this.handleEmailInput(event.target.value)
                     }
+                    name="email"
                     placeholder="e-post"
+                    aria-label="email"
                   />
                 </label>
               </div>
