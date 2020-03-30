@@ -25,7 +25,7 @@ const getData = async url => {
   }
 };
 
-const countBreeds = async (url, callback) => {
+const getMembers = async (url, callback) => {
   const data = await getData(url)
     if(data && data.data && data.data.data) {
       let members = data.data.data.filter(member => {
@@ -42,7 +42,7 @@ const countBreeds = async (url, callback) => {
 
     allData = allData.concat(members);
     if(data.data.links && data.data.links.next) {
-        countBreeds(data.data.links.next, callback);
+        getMembers(data.data.links.next, callback);
     } else {
         callback();
     }
@@ -52,9 +52,14 @@ const countBreeds = async (url, callback) => {
 
 }
 
-setInterval(() => { countBreeds(membersUrl, () => {}); }, 60000);
+setInterval(() => { 
+  // reset allData
+  allData = [];
 
-countBreeds(membersUrl, () => {});
+  getMembers(membersUrl, () => {}); 
+}, 60000);
+
+getMembers(membersUrl, () => {});
 
 
 
