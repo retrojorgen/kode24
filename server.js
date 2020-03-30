@@ -27,24 +27,29 @@ const getData = async url => {
 
 const countBreeds = async (url, callback) => {
   const data = await getData(url)
-  let members = data.data.data.filter(member => {
-      if(member.attributes.currently_entitled_amount_cents === 1900)
-          return true;
-      else {
-          return false;
-      }
-  });
-  
-  members = members.map(member => {
-          return member.attributes.full_name;
-  });
+    if(data && data.data && data.data.data) {
+      let members = data.data.data.filter(member => {
+        if(member.attributes.currently_entitled_amount_cents === 1900)
+            return true;
+        else {
+            return false;
+        }
+    });
+    
+    members = members.map(member => {
+            return member.attributes.full_name;
+    });
 
-  allData = allData.concat(members);
-  if(data.data.links && data.data.links.next) {
-      countBreeds(data.data.links.next, callback);
+    allData = allData.concat(members);
+    if(data.data.links && data.data.links.next) {
+        countBreeds(data.data.links.next, callback);
+    } else {
+        callback();
+    }
   } else {
-      callback();
+    return false;
   }
+
 }
 
 setInterval(() => { countBreeds(membersUrl, () => {}); }, 60000);
