@@ -37,7 +37,7 @@ const countBreeds = async (url, callback) => {
     });
     
     members = members.map(member => {
-            return member.attributes.full_name;
+        return member.attributes.full_name;
     });
 
     allData = allData.concat(members);
