@@ -40,7 +40,6 @@ const getMembers = async (url, callback) => {
         return member.attributes.full_name;
     });
 
-    console.log(allData.length, members.length, 'data lengths');
     allData = allData.concat(members);
     if(data.data.links && data.data.links.next) {
         getMembers(data.data.links.next, callback);
@@ -56,7 +55,6 @@ const getMembers = async (url, callback) => {
 setInterval(() => { 
   // reset allData
   allData = [];
-  console.log(allData.length);
 
   getMembers(membersUrl, () => {}); 
 }, 60000);
