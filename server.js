@@ -11,57 +11,60 @@ const cors = require("cors");
 
 const axios = require("axios");
 //const membersUrl = "https://api.patreon.com/oauth2/v2/campaigns/4143288/members?include=currently_entitled_tiers";
-const membersUrl = "https://www.patreon.com/api/oauth2/v2/campaigns/4143288/members?include=currently_entitled_tiers,address&fields%5Bmember%5D=full_name,is_follower,last_charge_date,last_charge_status,lifetime_support_cents,currently_entitled_amount_cents,patron_status&fields%5Btier%5D=amount_cents,created_at,description,discord_role_ids,edited_at,patron_count,published,published_at,requires_shipping,title,url";
+const membersUrl =
+  "https://www.patreon.com/api/oauth2/v2/campaigns/4143288/members?include=currently_entitled_tiers,address&fields%5Bmember%5D=full_name,is_follower,last_charge_date,last_charge_status,lifetime_support_cents,currently_entitled_amount_cents,patron_status&fields%5Btier%5D=amount_cents,created_at,description,discord_role_ids,edited_at,patron_count,published,published_at,requires_shipping,title,url";
 
 var allData = [];
 
 const getData = async url => {
   try {
     return await axios.get(url, {
-        headers: {'Authorization': 'Bearer ' + process.env.PATREON_PASS}
+      headers: { Authorization: "Bearer " + process.env.PATREON_PASS }
     });
   } catch (error) {
     console.log(error);
   }
 };
 
+const excludeNames = ["Martin Singstad"];
+
 const getMembers = async (url, callback) => {
-  const data = await getData(url)
-    if(data && data.data && data.data.data) {
-      let members = data.data.data.filter(member => {
-        if(member.attributes.currently_entitled_amount_cents === 1900)
-            return true;
-        else {
-            return false;
-        }
+  const data = await getData(url);
+  if (data && data.data && data.data.data) {
+    let members = data.data.data.filter(member => {
+      if (
+        member.attributes.currently_entitled_amount_cents === 1900 &&
+        excludeNames.indexOf(member.attributes.full_name) < 0
+      )
+        return true;
+      else {
+        return false;
+      }
     });
-    
+
     members = members.map(member => {
-        return member.attributes.full_name;
+      return member.attributes.full_name;
     });
 
     allData = allData.concat(members);
-    if(data.data.links && data.data.links.next) {
-        getMembers(data.data.links.next, callback);
+    if (data.data.links && data.data.links.next) {
+      getMembers(data.data.links.next, callback);
     } else {
-        callback();
+      callback();
     }
   } else {
     return false;
   }
+};
 
-}
-
-setInterval(() => { 
+setInterval(() => {
   // reset allData
   allData = [];
 
-  getMembers(membersUrl, () => {}); 
+  getMembers(membersUrl, () => {});
 }, 60000);
 
 getMembers(membersUrl, () => {});
-
-
 
 const app = express();
 
@@ -81,10 +84,10 @@ app.get("/api/test", (req, res) => {
 });
 
 app.get("/api/patreons", (req, res) => {
-    res.json({
-      total: allData.length,
-      members: allData
-    });
+  res.json({
+    total: allData.length,
+    members: allData
+  });
 });
 
 app.post("/api/email", (req, res) => {
