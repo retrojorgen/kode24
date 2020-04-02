@@ -15,45 +15,45 @@ common_aliases:
   # default workflow is deploy master to production, develop to stage, anything else to test
   # test will disappear, and PR will be deployed to stage in a pr-$app namespace
   - &default_workflows
-      version: 2
-      build-stage:
-        jobs:
-          - build:
-              context: "org-global"
-          - deploy_prod:
-              context: "org-global"
-              requires:
-                - build
-              filters:
-                branches:
-                  only: master
-          - deploy_stage:
-              context: "org-global"
-              requires:
-                - build
-              filters:
-                branches:
-                  only: develop
-          - deploy_test:
-              context: "org-global"
-              requires:
-                - build
-              filters:
-                branches:
-                  ignore:
-                    - master
-                    - develop
+    version: 2
+    build-stage:
+      jobs:
+        - build:
+            context: "org-global"
+        - deploy_prod:
+            context: "org-global"
+            requires:
+              - build
+            filters:
+              branches:
+                only: master
+        - deploy_stage:
+            context: "org-global"
+            requires:
+              - build
+            filters:
+              branches:
+                only: develop
+        - deploy_test:
+            context: "org-global"
+            requires:
+              - build
+            filters:
+              branches:
+                ignore:
+                  - master
+                  - develop
 
   - &privileged_workflows
-      version: 2
-      build-stage:
-        jobs:
-          - build:
-              context: "org-global"
-          - deploy_privileged:
-              context: "org-global"
-              requires:
-                - build
+    version: 2
+    build-stage:
+      jobs:
+        - build:
+            context: "org-global"
+        - deploy_privileged:
+            context: "org-global"
+            requires:
+              - build
 
   # --- utility functions --- #
   - &docker_login
@@ -133,10 +133,10 @@ common_aliases:
       - image: docker:17.05.0-ce-git
 
   - &setup_remote_docker
-      setup_remote_docker:
-        version: 17.10.0-ce
-        docker_layer_caching: true
-        
+    setup_remote_docker:
+      version: 17.10.0-ce
+      docker_layer_caching: true
+
   - &docker_build
     run:
       name: Build and tag docker image
@@ -158,10 +158,10 @@ common_aliases:
         docker push $GCR/$CIRCLE_PROJECT_REPONAME/$CIRCLE_PROJECT_REPONAME
 
   - &setup_tests
-      run:
-        name: Create folder for tests output
-        command: |
-          mkdir -p $CIRCLE_WORKING_DIRECTORY/reports/junit
+    run:
+      name: Create folder for tests output
+      command: |
+        mkdir -p $CIRCLE_WORKING_DIRECTORY/reports/junit
 
   - &store_test_results
     store_test_results:
@@ -170,8 +170,6 @@ common_aliases:
   - &store_test_artifacts
     store_artifacts:
       path: reports/junit/
-
-
 
 #########################################################################
 #
@@ -191,8 +189,8 @@ jobs:
       - <<: *store_test_artifacts
       - <<: *docker_push_gcr
 
-  deploy_prod:  *deploy_prod
+  deploy_prod: *deploy_prod
   deploy_stage: *deploy_stage
-  deploy_test:  *deploy_test
+  deploy_test: *deploy_test
 
 workflows: *default_workflows
