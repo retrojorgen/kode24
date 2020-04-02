@@ -28,7 +28,7 @@ const getData = async url => {
 
 const excludeNames = ["Martin Singstad"];
 
-const getMembers = async (url, callback) => {
+const getMembers = async (url, wipeData, callback) => {
   const data = await getData(url);
   if (data && data.data && data.data.data) {
     let members = data.data.data.filter(member => {
@@ -45,10 +45,10 @@ const getMembers = async (url, callback) => {
     members = members.map(member => {
       return member.attributes.full_name;
     });
-
-    allData = allData.concat(members);
+    if (wipeData) allData = members;
+    else allData = allData.concat(members);
     if (data.data.links && data.data.links.next) {
-      getMembers(data.data.links.next, callback);
+      getMembers(data.data.links.next, false, callback);
     } else {
       callback();
     }
@@ -61,10 +61,10 @@ setInterval(() => {
   // reset allData
   allData = [];
 
-  getMembers(membersUrl, () => {});
+  getMembers(membersUrl, true, () => {});
 }, 60000);
 
-getMembers(membersUrl, () => {});
+getMembers(membersUrl, true, () => {});
 
 const app = express();
 
